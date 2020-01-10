@@ -1,5 +1,6 @@
 ﻿using DefaultEcs;
 using DefaultEcs.System;
+using LastLightECS.Components;
 using System;
 using System.Numerics;
 
@@ -10,10 +11,12 @@ namespace LastLightECS.Systems
     public class DrawGraphicsSystem : AEntitySystem<float>
     {
         World world;
+        EntitySet screenDirtySet;
 
         public DrawGraphicsSystem(World world) : base(world)
         {
             this.world = world;
+            screenDirtySet = world.GetEntities().With<ScreenDirty>().AsSet();
         }
 
         protected override void Update(float deltaTime, in Entity entity)
@@ -29,6 +32,12 @@ namespace LastLightECS.Systems
             Console.ForegroundColor = graphics.Foreground;
             
             Console.Write(graphics.Characters);
+
+            var dirtyCoords = screenDirtySet.GetEntities().ToArray()[0].Get<ScreenDirty>();
+            for (int i = 0; i < graphics.Characters.Length; i++)
+            {
+                dirtyCoords.Add(x + i, y);
+            }
         }
     }
 }

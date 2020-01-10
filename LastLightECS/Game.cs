@@ -1,5 +1,6 @@
 ﻿using DefaultEcs;
 using DefaultEcs.System;
+using LastLightECS.Components;
 using LastLightECS.Systems;
 using System;
 using System.Collections.Generic;
@@ -44,12 +45,11 @@ namespace LastLightECS
         { 
             Console.CursorVisible = false;
             
-            systems.Add(new ActionSystem<float>(ClearScreen));
+            systems.Add(new ClearScreenSystem(world));
             systems.Add(new InputStrokeCreatorSystem(world));
             systems.Add(new ShutdownSystem(world));
             systems.Add(new ObjectMoveSystem(world));
             systems.Add(new DrawGraphicsSystem(world));
-
 
             var fireball = world.CreateEntity();
             fireball.Set(new WorldPosition{Value = new Vector2(0, 0)});
@@ -60,6 +60,9 @@ namespace LastLightECS
                Background = ConsoleColor.Red,
                Characters = "()"
             });
+
+            var globalEntity = world.CreateEntity();
+            globalEntity.Set(new ScreenDirty());
         }
 
         bool Update()
@@ -74,12 +77,6 @@ namespace LastLightECS
             Thread.Sleep(FrameMillis);
 
             return shutdownSet.GetEntities().IsEmpty;
-        }
-
-        void ClearScreen(float _)
-        {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
         }
     }
 }

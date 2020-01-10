@@ -1,8 +1,11 @@
 ﻿using System;
 
-public struct Graphics
+namespace LastLightECS.Components
 {
-    public ConsoleColor Background;
-    public ConsoleColor Foreground;
-    public string Characters;
+    public struct Graphics
+    {
+        public ConsoleColor Background;
+        public ConsoleColor Foreground;
+        public string Characters;
+    }
 }

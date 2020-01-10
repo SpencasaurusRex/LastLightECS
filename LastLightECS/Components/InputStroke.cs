@@ -1,6 +1,9 @@
 ﻿using System;
 
-public struct InputStroke
+namespace LastLightECS.Components
 {
-    public ConsoleKeyInfo Info;
+    public struct InputStroke
+    {
+        public ConsoleKeyInfo Info;
+    }
 }

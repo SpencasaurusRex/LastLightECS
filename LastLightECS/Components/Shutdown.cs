@@ -1,4 +1,7 @@
-﻿public struct Shutdown
+﻿namespace LastLightECS.Components
 {
-    // Tag component
+    public struct Shutdown
+    {
+        // Tag component
+    }
 }

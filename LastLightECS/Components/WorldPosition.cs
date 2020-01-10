@@ -1,6 +1,9 @@
 ﻿using System.Numerics;
 
-public struct WorldPosition
+namespace LastLightECS.Components
 {
-    public Vector2 Value;
+    public struct WorldPosition
+    {
+        public Vector2 Value;
+    }
 }

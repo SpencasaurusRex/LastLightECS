@@ -1,5 +1,6 @@
 ﻿using DefaultEcs;
 using DefaultEcs.System;
+using LastLightECS.Components;
 
 namespace LastLightECS.Systems
 {

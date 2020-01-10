@@ -1,6 +1,9 @@
 ﻿using System.Numerics;
 
-public struct Velocity
+namespace LastLightECS.Components
 {
-    public Vector2 Value;
+    public struct Velocity
+    {
+        public Vector2 Value;
+    }
 }
