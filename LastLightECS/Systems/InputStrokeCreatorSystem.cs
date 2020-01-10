@@ -1,6 +1,7 @@
 ﻿using DefaultEcs;
 using DefaultEcs.System;
 using LastLightECS.Components;
+using System;
 
 namespace LastLightECS.Systems
 {
@@ -10,9 +11,7 @@ namespace LastLightECS.Systems
         public bool IsEnabled { get; set; }
         World world;
 
-        public void Dispose()
-        {
-        }
+        public void Dispose() { }
 
         public InputStrokeCreatorSystem(World world)
         {
@@ -21,10 +20,10 @@ namespace LastLightECS.Systems
 
         public void Update(float state)
         {
-            while (System.Console.KeyAvailable)
+            while (Console.KeyAvailable)
             {
                 var entity = world.CreateEntity();
-                entity.Set(new InputStroke { Info = System.Console.ReadKey(true) });
+                entity.Set(new InputStroke { Info = Console.ReadKey(true) });
             }
         }
     }

@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace LastLightECS
+﻿namespace LastLightECS
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main(string[] args) 
         {
             using (Game game = new Game())
             {

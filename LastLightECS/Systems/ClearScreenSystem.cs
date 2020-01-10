@@ -7,9 +7,7 @@ namespace LastLightECS.Systems
 {
     public class ClearScreenSystem : AComponentSystem<float, ScreenDirty>
     {
-        public ClearScreenSystem(World world) : base(world)
-        {
-        }
+        public ClearScreenSystem(World world) : base(world) { }
 
         protected override void Update(float deltaTime, ref ScreenDirty screenDirty)
         {
@@ -19,6 +17,8 @@ namespace LastLightECS.Systems
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Write(" ");
             }
+
+            screenDirty.Coords.Clear();
         }
     }
 }

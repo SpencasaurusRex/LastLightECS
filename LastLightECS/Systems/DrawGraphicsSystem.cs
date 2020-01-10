@@ -24,9 +24,14 @@ namespace LastLightECS.Systems
             ref Graphics graphics = ref entity.Get<Graphics>();
             Vector2 pos = entity.Get<WorldPosition>().Value;
 
-            int x = (int) Math.Round(pos.X * 2);
-            int y = (int) Math.Round(pos.Y);
+            int x = (int) Math.Round(pos.X * 2) + Console.WindowWidth / 2;
+            int y = (int) Math.Round(pos.Y) + Console.WindowHeight / 2;
             
+            if (x < 0) return;
+            if (y < 0) return;
+            if (x >= Console.WindowWidth) return;
+            if (y >= Console.WindowHeight) return;
+
             Console.SetCursorPosition(x, y);
             Console.BackgroundColor = graphics.Background;
             Console.ForegroundColor = graphics.Foreground;

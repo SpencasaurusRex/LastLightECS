@@ -18,7 +18,7 @@ namespace LastLightECS.Systems
             if (inputStroke.Info.Key == System.ConsoleKey.Escape)
             {
                 var entity = world.CreateEntity();
-                entity.Set<Shutdown>();
+                entity.Set(new Shutdown());
             }
         }
     }
