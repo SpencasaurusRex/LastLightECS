@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-public struct WorldPosition
+public struct Velocity
 {
     public Vector2 Value;
 }

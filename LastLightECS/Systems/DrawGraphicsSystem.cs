@@ -19,7 +19,7 @@ namespace LastLightECS.Systems
         protected override void Update(float deltaTime, in Entity entity)
         { 
             ref Graphics graphics = ref entity.Get<Graphics>();
-            Vector2 pos = entity.Get<WorldPosition>().Pos;
+            Vector2 pos = entity.Get<WorldPosition>().Value;
 
             int x = (int) Math.Round(pos.X * 2);
             int y = (int) Math.Round(pos.Y);

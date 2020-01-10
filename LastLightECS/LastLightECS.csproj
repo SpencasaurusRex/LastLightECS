@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Components\Graphics.cs" />
     <Compile Include="Components\InputStroke.cs" />
+    <Compile Include="Components\Velocity.cs" />
     <Compile Include="Components\Shutdown.cs" />
     <Compile Include="Components\WorldPosition.cs" />
     <Compile Include="Game.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Systems\DrawGraphicsSystem.cs" />
     <Compile Include="Systems\InputStrokeCreatorSystem.cs" />
+    <Compile Include="Systems\ObjectMoveSystem.cs" />
     <Compile Include="Systems\ShutdownSystem.cs" />
   </ItemGroup>
   <ItemGroup>

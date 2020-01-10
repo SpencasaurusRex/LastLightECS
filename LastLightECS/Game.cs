@@ -3,13 +3,14 @@ using DefaultEcs.System;
 using LastLightECS.Systems;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Threading;
 
 namespace LastLightECS
 {
     public class Game : IDisposable
     {
-        const int FrameMillis = 16;
+        const int FrameMillis = 50;
 
         World world;
         List<ISystem<float>> systems;
@@ -41,11 +42,24 @@ namespace LastLightECS
 
         void Init()
         { 
+            Console.CursorVisible = false;
+            
+            systems.Add(new ActionSystem<float>(ClearScreen));
             systems.Add(new InputStrokeCreatorSystem(world));
             systems.Add(new ShutdownSystem(world));
+            systems.Add(new ObjectMoveSystem(world));
             systems.Add(new DrawGraphicsSystem(world));
 
-            Console.CursorVisible = false;
+
+            var fireball = world.CreateEntity();
+            fireball.Set(new WorldPosition{Value = new Vector2(0, 0)});
+            fireball.Set(new Velocity{Value = new Vector2(5, 5)});
+            fireball.Set(new Graphics
+            {
+               Foreground = ConsoleColor.Yellow,
+               Background = ConsoleColor.Red,
+               Characters = "()"
+            });
         }
 
         bool Update()
@@ -60,6 +74,12 @@ namespace LastLightECS
             Thread.Sleep(FrameMillis);
 
             return shutdownSet.GetEntities().IsEmpty;
+        }
+
+        void ClearScreen(float _)
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
         }
     }
 }
