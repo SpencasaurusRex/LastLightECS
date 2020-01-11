@@ -49,7 +49,6 @@ namespace LastLightECS
             systems.Add(new ClearScreenSystem(world));
             systems.Add(new InputStrokeCreatorSystem(world));
             systems.Add(new ShutdownSystem(world));
-            //systems.Add(new ObjectMoveSystem(world)); // Nothing has velocity
             systems.Add(new InputPlayerMoveSystem(world));
             systems.Add(new ObjectUpdatePositionSystem(world));
             systems.Add(new DrawGraphicsSystem(world));
@@ -57,13 +56,14 @@ namespace LastLightECS
 
             var playerEntity = world.CreateEntity();
             playerEntity.Set(new Player());
-            playerEntity.Set(new BoardPosition{Lane = 2, Radius = 0 });
+            playerEntity.Set(new BoardPosition{ Lane = 6, Radius = 0 });
             playerEntity.Set(new WorldPosition());
             playerEntity.Set(new Graphics
             {
                 Background = ConsoleColor.Black,
                 Foreground = ConsoleColor.White,
-                Characters = "[]"
+                Characters = "[]",
+                Layer = 1
             });
 
             var campfire = world.CreateEntity();
@@ -77,6 +77,24 @@ namespace LastLightECS
 
             var globalEntity = world.CreateEntity();
             globalEntity.Set(new ScreenDirty());
+            globalEntity.Set(new Board());
+
+            for (int lane = 0; lane < 8; lane++)
+            {
+                for (int radius = 0; radius < 8; radius++)
+                {
+                    var boardSlot = world.CreateEntity();
+                    boardSlot.Set(new WorldPosition());
+                    boardSlot.Set(new BoardPosition { Lane = lane, Radius = radius });
+                    boardSlot.Set(new Static());
+                    boardSlot.Set(new Graphics
+                    {
+                        Background = ConsoleColor.Black,
+                        Foreground = ConsoleColor.Gray,
+                        Characters = "░░"
+                    });
+                }
+            }
         }
 
         bool Update()

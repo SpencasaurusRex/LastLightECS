@@ -63,10 +63,12 @@
     <Compile Include="Components\BoardPosition.cs" />
     <Compile Include="Components\Graphics.cs" />
     <Compile Include="Components\InputStroke.cs" />
+    <Compile Include="Components\MovementRequest.cs" />
+    <Compile Include="Components\Orb.cs" />
     <Compile Include="Components\Player.cs" />
     <Compile Include="Components\ScreenDirty.cs" />
-    <Compile Include="Components\Velocity.cs" />
     <Compile Include="Components\Shutdown.cs" />
+    <Compile Include="Components\Static.cs" />
     <Compile Include="Components\WorldPosition.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
@@ -76,7 +78,6 @@
     <Compile Include="Systems\InputPlayerMoveSystem.cs" />
     <Compile Include="Systems\InputStrokeClearSystem.cs" />
     <Compile Include="Systems\InputStrokeCreatorSystem.cs" />
-    <Compile Include="Systems\ObjectMoveSystem.cs" />
     <Compile Include="Systems\ObjectUpdatePositionSystem.cs" />
     <Compile Include="Systems\ShutdownSystem.cs" />
   </ItemGroup>

@@ -7,5 +7,6 @@ namespace LastLightECS.Components
         public ConsoleColor Background;
         public ConsoleColor Foreground;
         public string Characters;
+        public int Layer;
     }
 }
